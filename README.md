@@ -46,13 +46,17 @@ $ git remote -v
 2. Default ветка master или main? См. пункт *"Изменить master ветку на main"*
 3. Скопировать HTTPS ключ/url;
 4. В GitBash пойти в общую папку, где будет лежать папка проекта:
+
 ```bash
 # cd /d/P/dev_folder/
 ```
+
 5. Выполнить команду: 
+
 ```bash
 $ git clone https://...
 ```
+
 6. В общей папке создастся папка проекта со скачанными данными, инициализированным локальным репозиторием и привязкой к удалённому репозиторию на GitHub.
 
 
@@ -95,6 +99,7 @@ $ git clone https://...
 6. Изменить *master* на *main*;
 7. Сохранить, подождать;
 8. В папке проекта в GitBash выполнить команды:
+
 ```bash
 $ git branch -m master main
 $ git fetch origin
@@ -102,8 +107,8 @@ $ git branch -u origin/main main
 $ git remote set-head origin -a
 ```
 
-
 ## Конфигурация локального GitBash
+
 ```bash
 # делает переносы строк линуксовыми
 # выполнить один раз и навсегда
@@ -151,7 +156,26 @@ $ git log --oneline
 Бахай номер задачи/версию, пиши на английском, будь мужиком.
 
 Пиши информативно и кратко:
+
 ```bash
 $ git commit -m "v2.2: add entity tests for task manager"
 ```
 
+## Статусы файлов
+
+**Untracked** - неотслеживаемый файл. Git знает про его существование, но не следит за изменениями внутри файла.
+
+**Tracked** - отслеживаемый файл. Git следит за всеми изменениями в нём. Нет незакоммиченных изменений.
+
+**Modified (+ tracked)** - внесены изменения, но ещё не в staging area.
+
+**Staged (+ tracked)** - файл в staging area/index/cache. Состояние фиксации изменений перед коммитом. готовность к коммиту.
+
+```mermaid
+graph TB
+    A[untracked] --> |git add| B[staged+tracked];
+    B[staged+tracked] --> |git commit| C[committed+tracked];
+    C[committed+tracked] --> |changes| D[modified+tracked];
+    D[modified+tracked] --> |git add| B[staged+tracked];
+    B[staged+tracked] --> |changes| D[modified+tracked];
+```
