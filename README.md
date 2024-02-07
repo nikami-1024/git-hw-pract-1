@@ -169,7 +169,7 @@ $ git commit -m "v2.2: add entity tests for task manager"
 
 **Modified (+ tracked)** - внесены изменения, но ещё не в staging area.
 
-**Staged (+ tracked)** - файл в staging area/index/cache. Состояние фиксации изменений перед коммитом. готовность к коммиту.
+**Staged (+ tracked)** - файл в staging area/index/cache. Состояние фиксации изменений перед коммитом. Готовность к коммиту.
 
 ```mermaid
 graph TB
